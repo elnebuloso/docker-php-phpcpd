@@ -5,13 +5,13 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    image = docker.build("elnebuloso/php-codesniffer", "--pull --rm --no-cache -f Dockerfile .")
+                    image = docker.build("elnebuloso/php-phpcpd", "--pull --rm --no-cache -f Dockerfile .")
 
                     image.inside("--entrypoint=''") {
-                        codesniffer_version = sh(script: "phpcs --version | grep -Eo '((\\d+\\.)+\\d+)'", returnStdout: true).trim()
+                        phpcpd_version = sh(script: "phpcpd --version | grep -Eo '((\\d+\\.)+\\d+)'", returnStdout: true).trim()
                     }
 
-                    semver = semver(codesniffer_version)
+                    semver = semver(phpcpd_version)
 
                     docker.withRegistry("https://registry.hub.docker.com", '061d45cc-bc11-4490-ac21-3b2276f1dd05'){
                         image.push("${semver.get('tag_revision')}")
