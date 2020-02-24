@@ -15,4 +15,5 @@ Dockerized Copy/Paste Detector (CPD) for PHP code
 ## docker
 
 - https://hub.docker.com/r/elnebuloso/php-phpcpd
-- https://hub.docker.com/r/elnebuloso/php-phpcpd/tags
+- https://hub.docker.com/r/elnebuloso/php-phpcpd/tags?page=1&ordering=last_updated
+- weekly builds, 0 0 * * 0
